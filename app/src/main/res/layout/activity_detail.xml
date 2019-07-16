@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="detail"
+            type="com.dicoding.submission.detail.DetailModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".detail.DetailActivity">
+
+            <ImageView
+                android:id="@+id/img_banner"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:posterMovie="@{detail.poster}"
+                tools:src="@drawable/avengers" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/gradient_shape"
+                app:layout_constraintBottom_toBottomOf="@id/img_banner"
+                app:layout_constraintLeft_toLeftOf="@id/img_banner"
+                app:layout_constraintRight_toRightOf="@id/img_banner"
+                app:layout_constraintTop_toTopOf="@id/img_banner" />
+
+            <ImageView
+                android:id="@+id/img_photo"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:elevation="4dp"
+                android:scaleType="fitXY"
+                app:layout_constraintHorizontal_weight="3"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/txt_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:posterMovie="@{detail.poster}"
+                tools:src="@drawable/avengers" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@{detail.title}"
+                app:layout_constraintHorizontal_weight="5"
+                app:layout_constraintLeft_toRightOf="@id/img_photo"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/img_photo"
+                tools:text="Avengers: Infinity War" />
+
+
+            <TextView
+                android:id="@+id/txt_release_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="#fff"
+                app:layout_constraintLeft_toLeftOf="@id/txt_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_title"
+                app:getReleased="@{detail.release}"
+                tools:text="Release date: 31 Januari 2019" />
+
+            <TextView
+                android:id="@+id/txt_vote"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/circle"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:text="@{detail.vote}"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="85%" />
+
+            <TextView
+                android:id="@+id/txt_overview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/overview"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/txt_description"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_photo" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="18sp"
+                android:text="@{detail.overview}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_overview"
+                tools:text="Film Indonesia terbaik satu ini mengisahkan mengenai kelanjutan dari prekuelnya, diperankan oleh Iko Uwais berhasil keluar dari bangunan berdarah tersebut. Rama memiliki pikiran untuk bisa melanjutkan kehidupan dengan normal setelah hal tersebut terjadi. Akan tetapi, aksinya ketika insiden berdarah tersebut semakin menarik perhatian para kriminal." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
