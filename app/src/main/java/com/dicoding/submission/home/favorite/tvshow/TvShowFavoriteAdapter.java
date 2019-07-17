@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dicoding.submission.R;
-import com.dicoding.submission.databinding.ItemTvShowFavoriteBinding;
+import com.dicoding.submission.databinding.ItemTvShowBinding;
 import com.dicoding.submission.model.TvShowsData;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class TvShowFavoriteAdapter extends RecyclerView.Adapter<TvShowFavoriteAd
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
-        ItemTvShowFavoriteBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.item_tv_show_favorite, parent, false);
+        ItemTvShowBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.item_tv_show, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -44,9 +44,9 @@ public class TvShowFavoriteAdapter extends RecyclerView.Adapter<TvShowFavoriteAd
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemTvShowFavoriteBinding binding;
+        private final ItemTvShowBinding binding;
 
-        ViewHolder(ItemTvShowFavoriteBinding binding) {
+        ViewHolder(ItemTvShowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

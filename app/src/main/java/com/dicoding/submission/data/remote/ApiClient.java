@@ -3,7 +3,7 @@ package com.dicoding.submission.data.remote;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+class ApiClient {
 
     public static Retrofit retrofit = null;
 

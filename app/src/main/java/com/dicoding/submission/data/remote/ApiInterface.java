@@ -6,7 +6,7 @@ import com.dicoding.submission.model.TvShow;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
-public interface ApiInterface {
+interface ApiInterface {
 
     @GET("https://api.themoviedb.org/3/discover/movie?api_key=fc7cace3c43d3bf03694157f2cd0cb7f&language=en-US")
     Call<Movie> getAllMovies();

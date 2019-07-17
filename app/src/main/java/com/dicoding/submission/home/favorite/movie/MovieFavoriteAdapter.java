@@ -7,8 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.dicoding.submission.R;
-import com.dicoding.submission.databinding.ItemMovieFavoriteBinding;
+import com.dicoding.submission.databinding.ItemMovieBinding;
 import com.dicoding.submission.model.Result;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class MovieFavoriteAdapter extends RecyclerView.Adapter<MovieFavoriteAdap
         if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
-        ItemMovieFavoriteBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.item_movie_favorite, parent, false);
+        ItemMovieBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.item_movie, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -44,9 +45,9 @@ public class MovieFavoriteAdapter extends RecyclerView.Adapter<MovieFavoriteAdap
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemMovieFavoriteBinding binding;
+        private final ItemMovieBinding binding;
 
-        ViewHolder(ItemMovieFavoriteBinding binding) {
+        ViewHolder(ItemMovieBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

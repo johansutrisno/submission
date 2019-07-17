@@ -61,14 +61,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginRight="8dp"
-            android:text="(2019)"
+            android:layout_marginEnd="8dp"
             android:textAlignment="viewEnd"
             app:layout_constraintHorizontal_weight="1.5"
             app:layout_constraintLeft_toRightOf="@id/txt_title"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1"
+            app:getReleasedYear="@{data.releaseDate}"
             tools:text="(2018)" />
 
         <TextView
@@ -91,9 +91,9 @@
             android:id="@+id/txt_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="85%"
+            android:text="@{data.voteAverage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="83%" />

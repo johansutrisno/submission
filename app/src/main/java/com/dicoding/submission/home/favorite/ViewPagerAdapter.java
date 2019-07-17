@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.dicoding.submission.home.favorite.movie.MovieFavoriteFragment;
 import com.dicoding.submission.home.favorite.tvshow.TvShowFavoriteFragment;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+class ViewPagerAdapter extends FragmentPagerAdapter {
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);

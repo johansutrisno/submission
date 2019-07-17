@@ -2,7 +2,6 @@
     <string name="app_name">Movies App</string>
     <string name="title_movie">Movie</string>
     <string name="title_tv_show">TV Show</string>
-    <string name="title_notifications">Notifications</string>
     <string name="change_language">Change Language</string>
     <string name="favorite">Favorite</string>
     <string name="overview">Overview</string>

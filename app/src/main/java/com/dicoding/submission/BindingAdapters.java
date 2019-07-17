@@ -74,4 +74,20 @@ public class BindingAdapters {
         }
     }
 
+    @BindingAdapter({"getReleasedYear"})
+    public static void getReleasedYear(TextView textView, String date) {
+        Log.d("BindingAdapter", date);
+        if (!date.equals("null")) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date d = null;
+            try {
+                d = sdf.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            sdf.applyPattern("yyyy");
+            textView.setText(sdf.format(d));
+        }
+    }
+
 }

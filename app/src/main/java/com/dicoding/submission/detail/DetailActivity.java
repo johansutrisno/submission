@@ -18,7 +18,7 @@ import com.dicoding.submission.model.Result;
 import com.dicoding.submission.model.TvShowsData;
 
 public class DetailActivity extends AppCompatActivity {
-    ActivityDetailBinding binding;
+    private ActivityDetailBinding binding;
     private static final int MOVIE = 110;
     private static final int TV_SHOW = 87;
 
