@@ -1,14 +1,16 @@
 package com.dicoding.submission.home;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.dicoding.submission.R;
 import com.dicoding.submission.home.favorite.FavoriteFragment;
@@ -18,33 +20,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BottomNavigationView navigation;
+
+    private static final String FRAGMENT_HOME = "fragment_home";
+    private static final String FRAGMENT_OTHER = "fragment_other";
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-
-                    fragment = new MovieFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
-                            .commit();
+                    viewFragment(new MovieFragment(), FRAGMENT_HOME);
                     return true;
                 case R.id.navigation_dashboard:
-
-                    fragment = new TvShowFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
-                            .commit();
+                    viewFragment(new TvShowFragment(), FRAGMENT_OTHER);
                     return true;
                 case R.id.navigation_notifications:
-                    fragment = new FavoriteFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container_layout, fragment, fragment.getClass().getSimpleName())
-                            .commit();
+                    viewFragment(new FavoriteFragment(), FRAGMENT_OTHER);
                     return true;
             }
             return false;
@@ -56,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        if (savedInstanceState==null){
+        if (savedInstanceState == null) {
             navigation.setSelectedItemId(R.id.navigation_home);
         }
 
@@ -73,12 +67,40 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_change_settings){
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_change_settings) {
             Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(mIntent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void viewFragment(Fragment fragment, String name) {
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.container_layout, fragment);
+
+        final int count = fragmentManager.getBackStackEntryCount();
+
+        if (name.equals(FRAGMENT_OTHER)) fragmentTransaction.addToBackStack(name);
+
+        fragmentTransaction.commit();
+
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (fragmentManager.getBackStackEntryCount() <= count) {
+
+                    fragmentManager.popBackStack(FRAGMENT_OTHER, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+                    fragmentManager.removeOnBackStackChangedListener(this);
+
+                    navigation.getMenu().getItem(0).setChecked(true);
+                }
+            }
+        });
     }
 
 }
