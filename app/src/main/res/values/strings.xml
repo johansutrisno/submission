@@ -5,4 +5,5 @@
     <string name="change_language">Change Language</string>
     <string name="favorite">Favorite</string>
     <string name="overview">Overview</string>
+    <string name="empty_favorite">Oopss! \n You haven\'t liked anythings before :(</string>
 </resources>

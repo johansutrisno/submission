@@ -26,7 +26,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/recyclerView"
             app:layout_constraintTop_toTopOf="@+id/recyclerView"
-            app:progressBarVisibility="@{isLoading}" />
+            app:viewVisibility="@{isLoading}" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -37,8 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_movie" />
-
+            tools:listitem="@layout/item_movie"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

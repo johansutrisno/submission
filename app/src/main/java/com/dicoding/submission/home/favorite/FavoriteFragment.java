@@ -26,7 +26,7 @@ public class FavoriteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ViewPager viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new ViewPagerAdapter(getFragmentManager()));
+        viewPager.setAdapter(new ViewPagerAdapter(getChildFragmentManager()));
 
         TabLayout tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);

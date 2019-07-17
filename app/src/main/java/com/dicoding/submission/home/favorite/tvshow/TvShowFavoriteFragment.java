@@ -3,7 +3,6 @@ package com.dicoding.submission.home.favorite.tvshow;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +46,7 @@ public class TvShowFavoriteFragment extends Fragment implements TvShowNavigator 
 
         binding.setMViewModel(mFavoriteViewModel);
         binding.setIsLoading(true);
+        binding.setIsEmpty(false);
 
         showRecyclerList();
 
@@ -75,6 +75,7 @@ public class TvShowFavoriteFragment extends Fragment implements TvShowNavigator 
 
     @Override
     public void errorLoadListTvShow(String message) {
-        Log.e("ERROR", message);
+        binding.setIsLoading(false);
+        binding.setIsEmpty(true);
     }
 }

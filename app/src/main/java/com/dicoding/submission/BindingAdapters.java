@@ -21,10 +21,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BindingAdapters {
-    @BindingAdapter({"progressBarVisibility"})
-    public static void setVisibility(ProgressBar progressBar, Boolean visible) {
-        if (visible) progressBar.setVisibility(View.VISIBLE);
-        else progressBar.setVisibility(View.GONE);
+    @BindingAdapter({"viewVisibility"})
+    public static void setVisibility(View view, Boolean visible) {
+        if (visible) view.setVisibility(View.VISIBLE);
+        else view.setVisibility(View.GONE);
     }
 
     @BindingAdapter({"posterMovie"})

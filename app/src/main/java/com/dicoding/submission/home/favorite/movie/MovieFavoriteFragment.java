@@ -47,6 +47,7 @@ public class MovieFavoriteFragment extends Fragment implements MovieNavigator {
 
         binding.setMViewModel(mFavoriteViewModel);
         binding.setIsLoading(true);
+        binding.setIsEmpty(false);
 
         showRecyclerList();
 
@@ -74,6 +75,7 @@ public class MovieFavoriteFragment extends Fragment implements MovieNavigator {
 
     @Override
     public void errorLoadListMovie(String message) {
-        Log.e("ERROR", message);
+        binding.setIsLoading(false);
+        binding.setIsEmpty(true);
     }
 }

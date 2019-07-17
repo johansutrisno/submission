@@ -40,7 +40,7 @@ public class MovieRepository implements MovieDataSource {
 
             @Override
             public void onDataNotAvailable(String errorMessage) {
-                Log.d("data", "data kosong");
+                callback.onDataNotAvailable(errorMessage);
             }
         });
     }

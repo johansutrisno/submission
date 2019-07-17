@@ -40,7 +40,7 @@ public class TvShowRepository implements TvShowDataSource {
 
             @Override
             public void onDataNotAvailable(String errorMessage) {
-                Log.d("data", "data kosong");
+                callback.onDataNotAvailable(errorMessage);
             }
         });
     }

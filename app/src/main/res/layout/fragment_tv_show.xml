@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rvTvShow"
             app:layout_constraintTop_toTopOf="@+id/rvTvShow"
-            app:progressBarVisibility="@{isLoading}" />
+            app:viewVisibility="@{isLoading}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTvShow"
