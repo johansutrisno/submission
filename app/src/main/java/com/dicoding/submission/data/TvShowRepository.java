@@ -1,7 +1,5 @@
 package com.dicoding.submission.data;
 
-import android.util.Log;
-
 import com.dicoding.submission.data.local.TvShowLocalDataSource;
 import com.dicoding.submission.data.remote.TvShowRemoteDataSource;
 import com.dicoding.submission.model.TvShow;

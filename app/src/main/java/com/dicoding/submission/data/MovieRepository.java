@@ -1,7 +1,5 @@
 package com.dicoding.submission.data;
 
-import android.util.Log;
-
 import com.dicoding.submission.data.local.MovieLocalDataSource;
 import com.dicoding.submission.data.remote.MovieRemoteDataSource;
 import com.dicoding.submission.model.Movie;

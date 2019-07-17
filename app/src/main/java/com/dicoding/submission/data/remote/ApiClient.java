@@ -5,13 +5,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class ApiClient {
 
-    public static Retrofit retrofit = null;
-
-    public static Retrofit getClient() {
-        retrofit = new Retrofit.Builder()
+    static Retrofit getClient() {
+        return new Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        return retrofit;
     }
 }

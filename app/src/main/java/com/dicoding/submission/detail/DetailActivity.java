@@ -18,7 +18,6 @@ import com.dicoding.submission.model.Result;
 import com.dicoding.submission.model.TvShowsData;
 
 public class DetailActivity extends AppCompatActivity {
-    private ActivityDetailBinding binding;
     private static final int MOVIE = 110;
     private static final int TV_SHOW = 87;
 
@@ -34,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        ActivityDetailBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
         binding.setLifecycleOwner(this);
 
         DetailModel detailModel = new DetailModel();
