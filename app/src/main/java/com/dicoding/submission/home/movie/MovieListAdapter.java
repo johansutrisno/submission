@@ -2,6 +2,8 @@ package com.dicoding.submission.home.movie;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -10,15 +12,18 @@ import com.dicoding.submission.R;
 import com.dicoding.submission.databinding.ItemMovieBinding;
 import com.dicoding.submission.model.Result;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> {
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.ViewHolder> implements Filterable {
 
     private List<Result> list;
+    private List<Result> listFiltered;
     private LayoutInflater layoutInflater;
 
     public MovieListAdapter(List<Result> list) {
         this.list = list;
+        this.listFiltered = list;
     }
 
     @NonNull
@@ -33,12 +38,44 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.binding.setData(list.get(position));
+        holder.binding.setData(listFiltered.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return listFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    listFiltered = list;
+                } else {
+                    List<Result> filteredList = new ArrayList<>();
+                    for (Result row : list) {
+                        if (row.getTitle().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    listFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = listFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                listFiltered = (List<Result>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

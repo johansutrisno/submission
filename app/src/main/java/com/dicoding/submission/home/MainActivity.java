@@ -59,22 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_lang, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_change_settings) {
-            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(mIntent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void viewFragment(Fragment fragment, String name) {
         final FragmentManager fragmentManager = getSupportFragmentManager();
 

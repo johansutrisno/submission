@@ -6,4 +6,5 @@
     <string name="favorite">Favorite</string>
     <string name="overview">Ringkasan</string>
     <string name="empty_favorite">Oopss! \n Kamu belum menyukai apapun sebelumnya :(</string>
+    <string name="search_hint">Ketik judul…</string>
 </resources>
