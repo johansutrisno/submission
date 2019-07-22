@@ -3,21 +3,13 @@ package com.dicoding.submission.widget;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.dicoding.submission.R;
-import com.dicoding.submission.data.MovieDataSource;
-import com.dicoding.submission.data.MovieRepository;
 import com.dicoding.submission.data.local.MovieDao;
 import com.dicoding.submission.data.local.MovieDatabase;
-import com.dicoding.submission.home.movie.MovieNavigator;
-import com.dicoding.submission.model.Movie;
 import com.dicoding.submission.model.Result;
 import com.squareup.picasso.Picasso;
 
@@ -42,8 +34,10 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onDataSetChanged() {
-        MovieDao movieDao = MovieDatabase.getInstance(mContext).movieDao();
-        mWidgetItems = movieDao.getFavoriteMovie();
+        mWidgetItems = MovieDatabase
+                .getInstance(mContext)
+                .movieDao()
+                .getFavoriteMovie();
     }
 
     @Override

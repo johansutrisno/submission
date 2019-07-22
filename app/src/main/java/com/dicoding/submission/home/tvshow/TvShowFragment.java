@@ -29,6 +29,7 @@ import com.dicoding.submission.model.TvShowsData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TvShowFragment extends Fragment implements TvShowNavigator {
 
@@ -86,12 +87,12 @@ public class TvShowFragment extends Fragment implements TvShowNavigator {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_lang, menu);
 
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) Objects.requireNonNull(getActivity()).getSystemService(Context.SEARCH_SERVICE);
 
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
                 .getActionView();
 
-        searchView.setSearchableInfo(searchManager
+        searchView.setSearchableInfo(Objects.requireNonNull(searchManager)
                 .getSearchableInfo(getActivity().getComponentName()));
 
         searchView.setMaxWidth(Integer.MAX_VALUE);
