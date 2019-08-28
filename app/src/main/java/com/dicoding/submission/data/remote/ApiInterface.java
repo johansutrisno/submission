@@ -5,12 +5,23 @@ import com.dicoding.submission.model.TvShow;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 interface ApiInterface {
 
-    @GET("https://api.themoviedb.org/3/discover/movie?api_key=fc7cace3c43d3bf03694157f2cd0cb7f&language=en-US")
-    Call<Movie> getAllMovies();
+    @GET("discover/movie")
+    Call<Movie> getAllMovies(@Query("api_key") String apiKey);
 
-    @GET("https://api.themoviedb.org/3/discover/tv?api_key=fc7cace3c43d3bf03694157f2cd0cb7f&language=en-US")
-    Call<TvShow> getAllTvShows();
+    @GET("discover/tv")
+    Call<TvShow> getAllTvShows(@Query("api_key") String apiKey);
+
+    @GET("search/movie")
+    Call<Movie> getSearchMovie(@Query("api_key") String apiKey, @Query("query") String query);
+
+    @GET("search/tv")
+    Call<TvShow> getSearchTvShow(@Query("api_key") String apiKey, @Query("query") String query);
+
+    @GET("discover/movie")
+    Call<Movie> getNewRelease(@Query("api_key") String apiKey, @Query("primary_release_date.gte") String gteDate,
+                              @Query("primary_release_date.lte") String lteDate);
 }

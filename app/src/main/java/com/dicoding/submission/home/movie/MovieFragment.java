@@ -27,6 +27,7 @@ import com.dicoding.submission.Injection;
 import com.dicoding.submission.databinding.FragmentMovieBinding;
 import com.dicoding.submission.R;
 import com.dicoding.submission.model.Result;
+import com.dicoding.submission.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class MovieFragment extends Fragment implements MovieNavigator {
 
         listMovie = new ArrayList<>();
 
-        MovieViewModel mMovieViewModel = new MovieViewModel(Injection.provideMovieRepository(requireContext()));
+        MovieViewModel mMovieViewModel = new MovieViewModel(Injection.provideDataRepository(requireContext()));
         mMovieViewModel.setMovieNavigator(this);
         mMovieViewModel.getListMovie();
 
@@ -100,13 +101,14 @@ public class MovieFragment extends Fragment implements MovieNavigator {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                adapter.getFilter().filter(s);
-                return false;
+                Intent intent = new Intent(requireContext(), SearchActivity.class);
+                intent.putExtra(SearchActivity.MOVIE_SEARCH, s);
+                startActivity(intent);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
                 return false;
             }
         });

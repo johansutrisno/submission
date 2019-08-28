@@ -1,5 +1,7 @@
 package com.dicoding.submission.home;
 
+import android.app.AlarmManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -13,6 +15,8 @@ import com.dicoding.submission.R;
 import com.dicoding.submission.home.favorite.FavoriteFragment;
 import com.dicoding.submission.home.movie.MovieFragment;
 import com.dicoding.submission.home.tvshow.TvShowFragment;
+import com.dicoding.submission.notification.DailyReminder;
+import com.dicoding.submission.notification.ReleaseReminder;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             navigation.setSelectedItemId(R.id.navigation_home);
         }
+
+        // start daily reminder
+        DailyReminder dailyReminder = new DailyReminder();
+        dailyReminder.setDailyReminder(this);
+
+        // start release reminder
+        ReleaseReminder releaseReminder = new ReleaseReminder();
+        releaseReminder.setReleaseReminder(this);
 
     }
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings.SettingsActivity">
+
+    <TextView
+        android:id="@+id/txt_release_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/release_reminder"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/toggle_release_reminder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_caption_release_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/caption_release_reminder"
+        app:layout_constraintLeft_toLeftOf="@id/txt_release_reminder"
+        app:layout_constraintRight_toRightOf="@id/txt_release_reminder"
+        app:layout_constraintTop_toBottomOf="@id/txt_release_reminder" />
+
+    <ToggleButton
+        android:id="@+id/toggle_release_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_caption_release_reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintLeft_toRightOf="@id/txt_release_reminder"
+        app:layout_constraintTop_toTopOf="@+id/txt_release_reminder" />
+
+    <TextView
+        android:id="@+id/txt_daily_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="@string/daily_reminder"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/toggle_release_reminder"
+        app:layout_constraintTop_toBottomOf="@id/txt_caption_release_reminder" />
+
+    <TextView
+        android:id="@+id/txt_caption_daily_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/caption_daily_reminder"
+        app:layout_constraintLeft_toLeftOf="@id/txt_daily_reminder"
+        app:layout_constraintRight_toRightOf="@id/txt_daily_reminder"
+        app:layout_constraintTop_toBottomOf="@id/txt_daily_reminder" />
+
+    <ToggleButton
+        android:id="@+id/toggle_daily_reminder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_caption_daily_reminder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toEndOf="@+id/txt_daily_reminder"
+        app:layout_constraintTop_toTopOf="@+id/txt_daily_reminder" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

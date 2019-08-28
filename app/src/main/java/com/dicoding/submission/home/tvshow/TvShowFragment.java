@@ -26,6 +26,7 @@ import com.dicoding.submission.Injection;
 import com.dicoding.submission.R;
 import com.dicoding.submission.databinding.FragmentTvShowBinding;
 import com.dicoding.submission.model.TvShowsData;
+import com.dicoding.submission.search.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class TvShowFragment extends Fragment implements TvShowNavigator {
 
         list = new ArrayList<>();
 
-        TvShowViewModel tvShowViewModel = new TvShowViewModel(Injection.provideTvShowRepository(requireContext()));
+        TvShowViewModel tvShowViewModel = new TvShowViewModel(Injection.provideDataRepository(requireContext()));
         tvShowViewModel.setTvShowNavigator(this);
         tvShowViewModel.getListTvShow();
 
@@ -100,13 +101,14 @@ public class TvShowFragment extends Fragment implements TvShowNavigator {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                adapter.getFilter().filter(s);
-                return false;
+                Intent intent = new Intent(requireContext(), SearchActivity.class);
+                intent.putExtra(SearchActivity.TV_SHOW_SEARCH, s);
+                startActivity(intent);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                adapter.getFilter().filter(s);
                 return false;
             }
         });

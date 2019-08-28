@@ -1,25 +1,16 @@
 package com.dicoding.submission.widget;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import com.dicoding.submission.Injection;
 import com.dicoding.submission.R;
-import com.dicoding.submission.data.MovieDataSource;
-import com.dicoding.submission.data.MovieRepository;
 import com.dicoding.submission.data.local.MovieDatabase;
-import com.dicoding.submission.home.movie.MovieNavigator;
-import com.dicoding.submission.model.Movie;
 import com.dicoding.submission.model.Result;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,15 +19,10 @@ import java.util.List;
 class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     private List<Result> mWidgetItems = new ArrayList<>();
-    private int appWidgetId;
     private final Context mContext;
-    private MovieRepository mMovieRepository;
-    private MovieNavigator mMovieNavigator;
 
-    public StackRemoteViewsFactory(Context context, Intent intent) {
+    public StackRemoteViewsFactory(Context context) {
         mContext = context;
-        this.appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
-        mMovieRepository = Injection.provideMovieRepository(context);
     }
 
     @Override
@@ -46,18 +32,6 @@ class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onDataSetChanged() {
-//        mMovieRepository.getListFavoriteMovies(new MovieDataSource.GetMoviesCallback() {
-//            @Override
-//            public void onMovieLoaded(Movie movie) {
-//                mWidgetItems.addAll(movie.getResults());
-//            }
-//
-//            @Override
-//            public void onDataNotAvailable(String errorMessage) {
-//                mMovieNavigator.errorLoadListMovie(errorMessage);
-//            }
-//        });
-
         mWidgetItems = MovieDatabase
                 .getInstance(mContext)
                 .movieDao()
