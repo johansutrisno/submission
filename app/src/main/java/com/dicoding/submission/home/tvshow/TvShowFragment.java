@@ -26,6 +26,7 @@ import com.dicoding.submission.Injection;
 import com.dicoding.submission.R;
 import com.dicoding.submission.databinding.FragmentTvShowBinding;
 import com.dicoding.submission.model.TvShowsData;
+import com.dicoding.submission.notification.SettingsActivity;
 import com.dicoding.submission.search.SearchActivity;
 
 import java.util.ArrayList;
@@ -121,8 +122,10 @@ public class TvShowFragment extends Fragment implements TvShowNavigator {
         if (id == R.id.action_search) {
             return true;
         } else if (id == R.id.action_change_settings) {
-            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(mIntent);
+            startActivity(new Intent(Settings.ACTION_LOCALE_SETTINGS));
+            return true;
+        } else if (id == R.id.action_settings) {
+            startActivity(new Intent(requireActivity(), SettingsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

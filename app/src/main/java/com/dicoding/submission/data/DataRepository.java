@@ -146,22 +146,22 @@ public class DataRepository implements DataSource {
 
     @Override
     public void saveDailyReminderState(Boolean state) {
-
+        localDataSource.saveDailyReminderState(state);
     }
 
     @Override
     public Boolean getDailyReminderState() {
-        return null;
+        return localDataSource.getDailyReminderState();
     }
 
     @Override
     public void saveReleaseReminderState(Boolean state) {
-
+        localDataSource.saveReleaseReminderState(state);
     }
 
     @Override
     public Boolean getReleaseReminderState() {
-        return null;
+        return localDataSource.getReleaseReminderState();
     }
 
     private void getMoviesFromRemoteDataSource(final GetMoviesCallback callback) {

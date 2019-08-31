@@ -2,6 +2,7 @@ package com.dicoding.submission.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.dicoding.submission.Helper;
 import com.dicoding.submission.data.DataSource;
@@ -151,21 +152,21 @@ public class LocalDataSource implements DataSource {
 
     @Override
     public void saveDailyReminderState(Boolean state) {
-        editor.putBoolean(Helper.Const.DAILY_REMINDER, state);
+        editor.putBoolean(Helper.Const.DAILY_REMINDER, state).apply();
     }
 
     @Override
     public Boolean getDailyReminderState() {
-        return sharedPreferences.getBoolean(Helper.Const.DAILY_REMINDER, true);
+        return sharedPreferences.getBoolean(Helper.Const.DAILY_REMINDER, false);
     }
 
     @Override
     public void saveReleaseReminderState(Boolean state) {
-        editor.putBoolean(Helper.Const.RELEASE_REMINDER, state);
+        editor.putBoolean(Helper.Const.RELEASE_REMINDER, state).apply();
     }
 
     @Override
     public Boolean getReleaseReminderState() {
-        return sharedPreferences.getBoolean(Helper.Const.RELEASE_REMINDER, true);
+        return sharedPreferences.getBoolean(Helper.Const.RELEASE_REMINDER, false);
     }
 }

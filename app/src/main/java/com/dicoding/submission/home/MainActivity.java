@@ -58,14 +58,6 @@ public class MainActivity extends AppCompatActivity {
             navigation.setSelectedItemId(R.id.navigation_home);
         }
 
-        // start daily reminder
-        DailyReminder dailyReminder = new DailyReminder();
-        dailyReminder.setDailyReminder(this);
-
-        // start release reminder
-        ReleaseReminder releaseReminder = new ReleaseReminder();
-        releaseReminder.setReleaseReminder(this);
-
     }
 
     private void viewFragment(Fragment fragment, String name) {
