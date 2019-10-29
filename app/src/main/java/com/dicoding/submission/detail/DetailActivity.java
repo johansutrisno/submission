@@ -11,8 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.dicoding.submission.R;
-import com.dicoding.submission.data.local.MovieLocalDataSource;
-import com.dicoding.submission.data.local.TvShowLocalDataSource;
+import com.dicoding.submission.data.local.LocalDataSource;
 import com.dicoding.submission.databinding.ActivityDetailBinding;
 import com.dicoding.submission.model.Result;
 import com.dicoding.submission.model.TvShowsData;
@@ -23,8 +22,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private int mMode;
 
-    private MovieLocalDataSource mMovieLocalDataSource;
-    private TvShowLocalDataSource mTvShowLocalDataSource;
+    private LocalDataSource mLocalDataSource;
 
     private Integer mId;
     private boolean isFavorite;
@@ -38,8 +36,7 @@ public class DetailActivity extends AppCompatActivity {
 
         DetailModel detailModel = new DetailModel();
 
-        mMovieLocalDataSource = new MovieLocalDataSource(this);
-        mTvShowLocalDataSource = new TvShowLocalDataSource(this);
+        mLocalDataSource = new LocalDataSource(this);
 
         Result movie = getIntent().getParcelableExtra("movie");
         TvShowsData tvShow = getIntent().getParcelableExtra("tvshow");
@@ -89,8 +86,8 @@ public class DetailActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_favorite) {
             isFavorite = !isFavorite;
             setFavorite();
-            if (mMode == MOVIE) mMovieLocalDataSource.saveFavorite(mId, isFavorite);
-            else if (mMode == TV_SHOW) mTvShowLocalDataSource.saveFavorite(mId, isFavorite);
+            if (mMode == MOVIE) mLocalDataSource.saveFavoriteMovie(mId, isFavorite);
+            else if (mMode == TV_SHOW) mLocalDataSource.saveFavoriteTvShow(mId, isFavorite);
             return true;
         } else {
             return super.onOptionsItemSelected(item);

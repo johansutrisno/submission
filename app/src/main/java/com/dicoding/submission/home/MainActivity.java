@@ -1,9 +1,8 @@
 package com.dicoding.submission.home;
 
-import android.content.Intent;
+import android.app.AlarmManager;
+import android.content.Context;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -16,6 +15,8 @@ import com.dicoding.submission.R;
 import com.dicoding.submission.home.favorite.FavoriteFragment;
 import com.dicoding.submission.home.movie.MovieFragment;
 import com.dicoding.submission.home.tvshow.TvShowFragment;
+import com.dicoding.submission.notification.DailyReminder;
+import com.dicoding.submission.notification.ReleaseReminder;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,22 +58,6 @@ public class MainActivity extends AppCompatActivity {
             navigation.setSelectedItemId(R.id.navigation_home);
         }
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_lang, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_change_settings) {
-            Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
-            startActivity(mIntent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void viewFragment(Fragment fragment, String name) {

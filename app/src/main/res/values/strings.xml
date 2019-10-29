@@ -6,4 +6,12 @@
     <string name="favorite">Favorite</string>
     <string name="overview">Overview</string>
     <string name="empty_favorite">Oopss! \n You haven\'t liked anythings before :(</string>
+    <string name="search_hint">Type title…</string>
+    <string name="favorite_movies">Favorite Movies</string>
+    <string name="search">Search</string>
+    <string name="empty_search">Movie yang anda cari tidak ada</string>
+    <string name="release_reminder">Release Reminder</string>
+    <string name="caption_release_reminder">Reminder showing the movie that released today</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="caption_daily_reminder">Reminder for return to app</string>
 </resources>

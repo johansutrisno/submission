@@ -1,16 +1,16 @@
 package com.dicoding.submission.home.favorite.tvshow;
 
-import com.dicoding.submission.data.TvShowDataSource;
-import com.dicoding.submission.data.TvShowRepository;
+import com.dicoding.submission.data.DataRepository;
+import com.dicoding.submission.data.DataSource;
 import com.dicoding.submission.home.tvshow.TvShowNavigator;
 import com.dicoding.submission.model.TvShow;
 
 public class TvShowFavoriteViewModel {
-    private TvShowRepository tvShowRepository;
+    private DataRepository dataRepository;
     private TvShowNavigator tvShowNavigator;
 
-    public TvShowFavoriteViewModel(TvShowRepository movieRepository) {
-        this.tvShowRepository = movieRepository;
+    public TvShowFavoriteViewModel(DataRepository dataRepository) {
+        this.dataRepository = dataRepository;
     }
 
     public void setMovieNavigator(TvShowNavigator navigator) {
@@ -18,7 +18,7 @@ public class TvShowFavoriteViewModel {
     }
 
     public void getListMovieFavorite() {
-        tvShowRepository.getListFavoriteTvShow(new TvShowDataSource.GetTvShowsCallback() {
+        dataRepository.getFavoriteTvShow(new DataSource.GetTvShowsCallback() {
             @Override
             public void onTvShowLoaded(TvShow tvShow) {
                 tvShowNavigator.loadListTvShow(tvShow.getDataList());

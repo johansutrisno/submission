@@ -1,15 +1,15 @@
 package com.dicoding.submission.home.tvshow;
 
-import com.dicoding.submission.data.TvShowDataSource;
-import com.dicoding.submission.data.TvShowRepository;
+import com.dicoding.submission.data.DataRepository;
+import com.dicoding.submission.data.DataSource;
 import com.dicoding.submission.model.TvShow;
 
 public class TvShowViewModel {
-    private TvShowRepository tvShowRepository;
+    private DataRepository dataRepository;
     private TvShowNavigator tvShowNavigator;
 
-    public TvShowViewModel(TvShowRepository repository) {
-        tvShowRepository = repository;
+    public TvShowViewModel(DataRepository repository) {
+        dataRepository = repository;
     }
 
     public void setTvShowNavigator(TvShowNavigator navigator) {
@@ -17,7 +17,7 @@ public class TvShowViewModel {
     }
 
     public void getListTvShow() {
-        tvShowRepository.getListTvShows(new TvShowDataSource.GetTvShowsCallback() {
+        dataRepository.getListTvShows(new DataSource.GetTvShowsCallback() {
             @Override
             public void onTvShowLoaded(TvShow tvShow) {
                 tvShowNavigator.loadListTvShow(tvShow.getDataList());

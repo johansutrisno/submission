@@ -1,16 +1,16 @@
 package com.dicoding.submission.home.favorite.movie;
 
-import com.dicoding.submission.data.MovieDataSource;
-import com.dicoding.submission.data.MovieRepository;
+import com.dicoding.submission.data.DataRepository;
+import com.dicoding.submission.data.DataSource;
 import com.dicoding.submission.home.movie.MovieNavigator;
 import com.dicoding.submission.model.Movie;
 
 public class MovieFavoriteViewModel {
-    private MovieRepository movieRepository;
+    private DataRepository dataRepository;
     private MovieNavigator movieNavigator;
 
-    public MovieFavoriteViewModel(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
+    public MovieFavoriteViewModel(DataRepository dataRepository) {
+        this.dataRepository = dataRepository;
     }
 
     public void setMovieNavigator(MovieNavigator navigator) {
@@ -18,7 +18,7 @@ public class MovieFavoriteViewModel {
     }
 
     public void getListMovieFavorite() {
-        movieRepository.getListFavoriteMovies(new MovieDataSource.GetMoviesCallback() {
+        dataRepository.getFavoriteMovie(new DataSource.GetMoviesCallback() {
             @Override
             public void onMovieLoaded(Movie movie) {
                 movieNavigator.loadListMovie(movie.getResults());

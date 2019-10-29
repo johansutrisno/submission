@@ -40,7 +40,7 @@ public class MovieFavoriteFragment extends Fragment implements MovieNavigator {
 
         mListMovie = new ArrayList<>();
 
-        MovieFavoriteViewModel mFavoriteViewModel = new MovieFavoriteViewModel(Injection.provideMovieRepository(requireContext()));
+        MovieFavoriteViewModel mFavoriteViewModel = new MovieFavoriteViewModel(Injection.provideDataRepository(requireContext()));
         mFavoriteViewModel.setMovieNavigator(this);
         mFavoriteViewModel.getListMovieFavorite();
 

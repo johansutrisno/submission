@@ -40,7 +40,7 @@ public class TvShowFavoriteFragment extends Fragment implements TvShowNavigator 
 
         mListTvShow = new ArrayList<>();
 
-        TvShowFavoriteViewModel mFavoriteViewModel = new TvShowFavoriteViewModel(Injection.provideTvShowRepository(requireContext()));
+        TvShowFavoriteViewModel mFavoriteViewModel = new TvShowFavoriteViewModel(Injection.provideDataRepository(requireContext()));
         mFavoriteViewModel.setMovieNavigator(this);
         mFavoriteViewModel.getListMovieFavorite();
 
